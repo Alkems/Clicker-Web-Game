@@ -1,5 +1,13 @@
-    pointsPerClick = 1;
-  
+    // Beginning values, kind of Globalvariables.
+    var pointsPerClick = 1;
+    localStorage.setItem("pointsPerClick", pointsPerClick)
+
+    var Total = 0;
+    localStorage.setItem("Total", Total)
+
+
+
+
     // Event listeners
     // Gain points button
     document.getElementById("clickMe").addEventListener("click", () => {
@@ -16,10 +24,11 @@
     // Functions
     // Adds points on each Click me! button hit.
     function addPoints(){
-        let pointAmount = document.querySelector("points");
-        var Total = 0;
-        Total = pointsPerClick++;
-        localStorage.setItem("Total", Total)
+        var pointsPerClick = parseInt(localStorage.getItem("pointsPerClick", pointsPerClick)) || 1;
+
+        var Total = parseInt(localStorage.getItem("Total", Total)) || 0;
+        Total += pointsPerClick;
+        localStorage.setItem("Total", Total);
 
         document.getElementById("points").textContent = "Points: " + Total;
     };
@@ -31,13 +40,12 @@
 
         if (Total > upgradeCost) {
             Total = Total - upgradeCost;
-
             localStorage.setItem("Total", Total);
+
             pointsPerClick = pointsPerClick * 1.5;
-
             localStorage.setItem("pointsPerClick", pointsPerClick);
-            upgradeCost = upgradeCost * 1.1;
 
+            upgradeCost = upgradeCost * 1.1;
             document.getElementById("points").textContent = "Points: " + Total;
         } else {
             alert("You do not have enough points to upgrade.")
