@@ -48,7 +48,7 @@
             upgradeCost = upgradeCost * 1.05;
             localStorage.setItem("upgradeCost", upgradeCost.toFixed(6));
 
-            document.getElementById("points").textContent = "Points: " + Total.toFixed(6);
+            document.getElementById("points").textContent = "BTC: " + Total.toFixed(6);
             document.getElementById("upgrade").textContent = "Upgrade: " + upgradeCost.toFixed(6) + "BTC!"
         } else {
             alert("You do not have enough points to upgrade.")
