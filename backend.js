@@ -11,7 +11,7 @@
 
     // Event listeners
     // Gain points button
-    document.getElementById("clickMe").addEventListener("click", () => {
+    document.getElementById("mine").addEventListener("click", () => {
         addPoints();
     });
 
@@ -31,7 +31,7 @@
         Total += pointsPerClick;
         localStorage.setItem("Total", Total);
 
-        document.getElementById("points").textContent = "Points: " + Total.toFixed(6);
+        document.getElementById("points").textContent = "BTC: " + Total.toFixed(6);
     };
 
     // Upgrades the amount of points you get by each click and requires points to upgrade.
@@ -42,10 +42,10 @@
             Total = Total - upgradeCost;
             localStorage.setItem("Total", Total.toFixed(6));
 
-            pointsPerClick = pointsPerClick * 1.3;
+            pointsPerClick = pointsPerClick * 1.1;
             localStorage.setItem("pointsPerClick", pointsPerClick.toFixed(6));
 
-            upgradeCost = upgradeCost * 1.1;
+            upgradeCost = upgradeCost * 1.05;
             localStorage.setItem("upgradeCost", upgradeCost.toFixed(6));
 
             document.getElementById("points").textContent = "Points: " + Total.toFixed(6);
